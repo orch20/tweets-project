@@ -1,3 +1,5 @@
-import css from "./button.module.scss";
-
-export const Button = () => <button className={css.button}>follow</button>;
+export const Button = ({ text, handelClick, styleButton }) => (
+  <button type="button" className={styleButton} onClick={handelClick}>
+    {text}
+  </button>
+);
