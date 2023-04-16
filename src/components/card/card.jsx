@@ -11,13 +11,25 @@ export const Card = ({ info }) => {
   const [follow, setFollow] = useState(false);
   const [count, setCount] = useState(info.followers);
 
-  // useEffect(() => {
-  //   setCount(info.followers);
-  // }, [info]);
+  useEffect(() => {
+    setCount(info.followers);
+    const getInfo = localStorage.getItem(`${info.user}+${info.id}`);
+    if (getInfo) {
+      const parsedInfo = JSON.parse(getInfo);
+      setFollow(parsedInfo.follow);
+      setCount(parsedInfo.followers);
+    }
+  }, [info]);
 
   const handelClick = () => {
+    let updatedCount;
     setFollow(!follow);
-    follow ? setCount(count - 1) : setCount(count + 1);
+    follow ? (updatedCount = count - 1) : (updatedCount = count + 1);
+    setCount(updatedCount);
+    localStorage.setItem(
+      `${info.user}+${info.id}`,
+      JSON.stringify({ followers: updatedCount, follow: !follow })
+    );
   };
 
   return (
