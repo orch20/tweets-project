@@ -1,37 +1,51 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-import { CardList } from "./components/cardList/cardList";
+import React, { useState, useEffect } from "react";
 
+import { CardList } from "./components/cardList/cardList";
+import { Button } from "./components/button/button";
+import { tweetService } from "./services/serviceApi.js";
 import "./App.css";
 
 function App() {
-  // const [count, setCount] = useState(0)
+  const [page, setPage] = useState(1);
+  const [userInfo, setUserInfo] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    getImages(page);
+  }, [page]);
+
+  const getImages = async (page) => {
+    setIsLoading(true);
+    try {
+      const data = await tweetService(page);
+
+      setUserInfo([...userInfo, ...data]);
+      setIsVisible(30 > 12 * page);
+    } catch (error) {
+      console.error(error);
+      setError({ error: error.message });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const onHandelLoadMore = () => {
+    setPage((prevPage) => prevPage + 1);
+  };
 
   return (
-    <CardList />
-    // <div className="App">
-    //   <div>
-    //     <a href="https://vitejs.dev" target="_blank">
-    //       <img src={viteLogo} className="logo" alt="Vite logo" />
-    //     </a>
-    //     <a href="https://reactjs.org" target="_blank">
-    //       <img src={reactLogo} className="logo react" alt="React logo" />
-    //     </a>
-    //   </div>
-    //   <h1>Vite + React</h1>
-    //   <div className="card">
-    //     <button onClick={() => setCount((count) => count + 1)}>
-    //       count is {count}
-    //     </button>
-    //     <p>
-    //       Edit <code>src/App.jsx</code> and save to test HMR
-    //     </p>
-    //   </div>
-    //   <p className="read-the-docs">
-    //     Click on the Vite and React logos to learn more
-    //   </p>
-    // </div>
+    <>
+      <CardList data={userInfo} />
+      {isVisible && (
+        <Button
+          text={isLoading ? "Loading..." : "Load more"}
+          handelClick={onHandelLoadMore}
+          disabled={isLoading}
+        />
+      )}
+    </>
   );
 }
 
