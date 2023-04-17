@@ -1,0 +1,73 @@
+/* CSS for HomePage of Tweets App */
+
+/* Container for the home page */
+.container {
+  position: relative; /* Setting position to relative for positioning the background */
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px;
+  text-align: center;
+}
+
+/* Background styles */
+.background {
+  position: absolute; /* Setting position to absolute for positioning the background */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #007bff;
+  opacity: 0.6;
+  z-index: -1; /* Setting z-index to -1 to position the background behind the content */
+  animation: animateBackground 10s infinite; /* Adding animation for interactive effect */
+}
+
+/* Title styles */
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  z-index: 1; /* Setting z-index to 1 to position the title above the background */
+}
+
+/* Paragraph styles */
+.text {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #777;
+  z-index: 1; /* Setting z-index to 1 to position the paragraph above the background */
+}
+
+/* Button styles */
+.button {
+  margin-top: 40px;
+  padding: 15px 30px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 1; /* Setting z-index to 1 to position the button above the background */
+}
+
+/* Button hover styles */
+.button:hover {
+  background-color: #0056b3;
+}
+
+/* Animation for interactive background */
+@keyframes animateBackground {
+  0% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+}
