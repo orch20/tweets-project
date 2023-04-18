@@ -1,0 +1,67 @@
+/* Container for the dropdown */
+.dropdown {
+  margin-top: 15px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 15px;
+  width: 200px; /* Set the width of the dropdown container as needed */
+}
+
+/* Style for the dropdown button */
+.dropdownBtn {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.22;
+  color: #ebd8ff;
+  appearance: none;
+  outline: none;
+  border: none;
+  background: linear-gradient(
+    114.99deg,
+    #471ca9 -0.99%,
+    #5736a3 54.28%,
+    #4b2a99 78.99%
+  );
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* Style for the dropdown options */
+.dropdownOption {
+  background-color: #805cac;
+  color: #333;
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* Style for the selected option */
+.dropdownBtn option:checked {
+  color: #fff;
+}
+
+/* Style for the dropdown menu */
+.dropdown select {
+  //   position: absolute;
+  //   top: 100%;
+  //   left: 50%;
+  margin: 0, auto;
+  width: 100%;
+  max-height: 200px; /* Set the maximum height of the dropdown menu as needed */
+  overflow-y: auto;
+  background-color: #f2f2f2;
+  color: #ebd8ff;
+
+  border: none;
+  padding: 0;
+  margin-top: 5px;
+  z-index: 1;
+}
+
+/* Style for the dropdown menu when it's open */
+.dropdown select:focus {
+  outline: none;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
