@@ -4,6 +4,7 @@ import { Button } from "../../components/button/button";
 import { tweetService } from "../../services/serviceApi.js";
 import css from "./Tweets.module.scss";
 import cssButton from "../../components/button/button.module.scss";
+import { Link } from "react-router-dom";
 
 const Tweets = () => {
   const [page, setPage] = useState(1);
@@ -78,6 +79,9 @@ const Tweets = () => {
 
   return (
     <>
+      <Link to="/">
+        <button className={cssButton.homeButton}>Back</button>
+      </Link>
       <div className={css.dropdown}>
         <select
           className={css.dropdownBtn}

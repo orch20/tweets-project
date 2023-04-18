@@ -65,3 +65,27 @@
     #29184f 78.99%
   );
 }
+
+// ----------------------------------------------------------------------------------------
+
+// ---Button Back---
+
+.homeButton {
+  background: linear-gradient(
+    114.99deg,
+    #471ca9 -0.99%,
+    #5736a3 54.28%,
+    #4b2a99 78.99%
+  );
+  color: #ebd8ff;
+  margin-top: 15px;
+  margin-left: 15px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.homeButton:hover {
+  background-color: #0056b3;
+}
